@@ -1,0 +1,39 @@
+/* ============================================================
+   SALMAN CARLIFT — Design Tokens & Variables
+   Palette: Night highway navy + UAE gold + ticket-stub cards
+   ============================================================ */
+:root {
+  --navy-950: #070f1c;
+  --navy-900: #0b1a2e;
+  --navy-800: #122744;
+  --navy-700: #1a355c;
+  --navy-600: #254773;
+
+  --gold-400: #e4c777;
+  --gold-500: #c9a24b;
+  --gold-600: #a9803a;
+
+  --cream-50: #f7f5f0;
+  --cream-100: #eee9dd;
+
+  --ink-muted: #9fb0c3;
+  --ink-faint: #5f7288;
+
+  --wa-green: #25d366;
+  --wa-green-dark: #1da851;
+  --danger: #e2574c;
+
+  --font-display: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  --radius-card: 22px;
+  --radius-pill: 999px;
+
+  --shadow-soft: 0 20px 60px -20px rgba(6, 12, 24, 0.55);
+  --shadow-gold: 0 12px 30px -10px rgba(201, 162, 75, 0.45);
+  --shadow-nav: 0 8px 30px -12px rgba(0, 0, 0, 0.6);
+
+  --container: 1220px;
+  --nav-h: 78px;
+}

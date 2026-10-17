@@ -1,0 +1,17 @@
+{
+  "name": "Salman Car Lift Dubai",
+  "short_name": "Salman Carlift",
+  "description": "Reliable monthly, weekly, and daily car lift services across Dubai, Abu Dhabi, Sharjah, and all UAE Emirates.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#070f1c",
+  "theme_color": "#070f1c",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
