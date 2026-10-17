@@ -58,12 +58,16 @@ html, body {
     -webkit-overflow-scrolling: touch;
     z-index: 999;
     transform: translateX(100%);
-    transition: transform 0.32s cubic-bezier(0.16, 1, 0.3, 1);
+    visibility: hidden;
+    pointer-events: none;
+    transition: transform 0.32s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.32s ease;
     box-shadow: -12px 0 40px rgba(0, 0, 0, 0.75);
   }
 
   .nav-links.open {
     transform: translateX(0);
+    visibility: visible;
+    pointer-events: auto;
   }
 
   .nav-links a {
@@ -110,6 +114,12 @@ html, body {
   /* Hide outline call button in top bar on mobile (handled in drawer/floating buttons) */
   .nav-cta .btn-outline {
     display: none;
+  }
+
+  /* Hide ticket-stub side perforations on tablet & mobile to prevent any horizontal overflow */
+  .ticket::before,
+  .ticket::after {
+    display: none !important;
   }
 
   /* Grids on Tablet */
@@ -166,16 +176,24 @@ html, body {
     font-size: 0.98rem;
   }
 
-  /* Single Column Grids */
+  /* Single Column Grids with minmax(0, 1fr) to prevent intrinsic expansion */
   .grid-3,
   .grid-2 {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
     gap: 20px;
+  }
+
+  /* Ensure grid children never push beyond container */
+  .grid-3 > *,
+  .grid-2 > *,
+  .grid-4 > * {
+    min-width: 0;
+    max-width: 100%;
   }
 
   /* Trust Strip: 2x2 grid on mobile for compact, beautiful layout */
   .grid-4 {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 12px;
   }
 
@@ -241,9 +259,11 @@ html, body {
     margin: 0 auto 12px auto;
   }
 
-  /* Trust Cards on Mobile */
+  /* Trust Cards & Grids on Mobile */
   .grid-4 .ticket {
-    padding: 16px 12px;
+    aspect-ratio: auto !important;
+    min-height: 140px;
+    padding: 18px 12px !important;
     border-radius: 16px;
   }
 
@@ -264,8 +284,17 @@ html, body {
   }
 
   .ticket {
-    padding: 24px 18px;
+    min-width: 0;
+    max-width: 100%;
+    padding: 24px 18px !important;
     border-radius: 18px;
+    box-sizing: border-box;
+  }
+
+  .btn {
+    white-space: normal;
+    text-align: center;
+    max-width: 100%;
   }
 
   .cta-card {
@@ -276,14 +305,9 @@ html, body {
     padding: 16px 10px !important;
   }
 
-  .ticket::before,
-  .ticket::after {
-    display: none; /* Hide circular punch-holes on narrow screens to maximize space */
-  }
-
   /* Route Item on Mobile */
   .route-item {
-    padding: 16px 18px;
+    padding: 16px 16px;
     border-radius: 14px;
     gap: 12px;
   }
@@ -291,6 +315,7 @@ html, body {
   .route-item .cities {
     font-size: 1.05rem;
     gap: 10px;
+    flex-wrap: wrap;
   }
 
   .route-item .price {
@@ -378,64 +403,115 @@ html, body {
   }
 
   .container {
-    padding: 0 12px;
+    padding: 0 10px;
   }
 
   .brand {
-    font-size: 1.02rem;
-    gap: 8px;
+    font-size: 0.98rem;
+    gap: 6px;
   }
 
   .brand .mark {
-    width: 32px;
-    height: 32px;
-    font-size: 0.85rem;
-    border-radius: 8px;
+    width: 30px;
+    height: 30px;
+    font-size: 0.8rem;
+    border-radius: 7px;
   }
 
   .nav-cta {
-    gap: 6px;
+    gap: 5px;
   }
 
   .nav-cta .btn-wa {
-    padding: 7px 10px;
-    font-size: 0.76rem;
-    gap: 6px;
+    padding: 7px 9px;
+    font-size: 0.74rem;
+    gap: 4px;
   }
 
   .nav-cta .btn-wa svg {
-    width: 15px;
-    height: 15px;
+    width: 14px;
+    height: 14px;
   }
 
   .nav-toggle {
     width: 36px;
     height: 36px;
-    font-size: 1.2rem;
-  }
-
-  .hero h1 {
-    font-size: 1.85rem;
-  }
-
-  .hero-meta .stat b {
     font-size: 1.15rem;
   }
 
+  .hero h1 {
+    font-size: 1.75rem;
+  }
+
+  .hero-meta {
+    gap: 6px;
+  }
+
+  .hero-meta .stat {
+    padding: 10px 4px;
+  }
+
+  .hero-meta .stat b {
+    font-size: 1.05rem;
+  }
+
   .hero-meta .stat span {
-    font-size: 0.65rem;
+    font-size: 0.62rem;
+    letter-spacing: 0;
   }
 
   .route-visual {
-    max-width: 240px;
+    max-width: 220px;
+  }
+
+  .ticket {
+    padding: 18px 12px !important;
+    border-radius: 14px;
+  }
+
+  .route-item {
+    padding: 14px 12px;
+  }
+
+  .route-item .cities {
+    font-size: 0.95rem;
   }
 
   .grid-4 {
-    grid-template-columns: 1fr; /* Single column on tiny 320px screens */
+    grid-template-columns: minmax(0, 1fr); /* Single column on tiny 320px screens */
+  }
+
+  .btn {
+    padding: 10px 14px;
+    font-size: 0.88rem;
+  }
+
+  .float-stack {
+    right: 10px;
+    bottom: 12px;
+    gap: 8px;
   }
 
   .float-btn {
-    width: 46px;
-    height: 46px;
+    width: 44px;
+    height: 44px;
+    font-size: 1.1rem;
+  }
+}
+
+/* ============================================================
+   Micro Devices (<= 340px — Galaxy Fold folded, 320px compact)
+   ============================================================ */
+@media (max-width: 340px) {
+  .nav-cta .btn-wa span {
+    display: none; /* Icon-only WhatsApp button on ultra-compact screens */
+  }
+
+  .nav-cta .btn-wa {
+    padding: 8px 10px;
+  }
+
+  .brand span:not(.mark) {
+    font-size: 0.88rem;
   }
 }
