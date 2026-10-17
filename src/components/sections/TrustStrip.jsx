@@ -28,7 +28,7 @@ export const TrustStrip = () => {
     <section className="section" style={{ padding: '48px 0', borderBottom: '1px solid rgba(228,199,119,.1)' }}>
       <div className="container grid-4">
         {trustItems.map((item, index) => (
-          <div key={index} className="ticket" style={{ padding: '22px', textAlign: 'center' }}>
+          <div key={index} className="ticket trust-ticket" style={{ textAlign: 'center' }}>
             <div className="icon-badge" style={{ margin: '0 auto 12px' }}>
               <span role="img" aria-label={item.title}>{item.icon}</span>
             </div>

@@ -99,7 +99,7 @@ export const GalleryPage = () => {
       {/* WhatsApp CTA */}
       <section className="section bg-panel" style={{ paddingTop: '64px', paddingBottom: '64px' }}>
         <div className="container">
-          <div className="ticket" style={{ padding: '56px 32px', textAlign: 'center', maxWidth: '780px', margin: '0 auto' }}>
+          <div className="ticket cta-card" style={{ maxWidth: '780px', margin: '0 auto' }}>
             <h2 style={{ color: '#f7f5f0', marginBottom: '14px' }}>Want to See Your Route in Action?</h2>
             <p style={{ maxWidth: '520px', margin: '0 auto 24px', lineHeight: '1.7' }}>
               Message us on WhatsApp for photos or exact details of the vehicle type and seat availability operating near your home or office.

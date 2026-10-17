@@ -92,6 +92,15 @@ export const Navbar = () => {
             </button>
           </div>
         </div>
+
+        {/* Dark backdrop overlay on mobile */}
+        {mobileOpen && (
+          <div
+            className="mobile-backdrop"
+            onClick={() => setMobileOpen(false)}
+            aria-hidden="true"
+          />
+        )}
       </header>
     </>
   );

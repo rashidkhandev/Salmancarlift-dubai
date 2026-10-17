@@ -52,7 +52,7 @@ export const TestimonialsPage = () => {
       {/* CTA */}
       <section className="section bg-panel">
         <div className="container">
-          <div className="ticket" style={{ padding: '56px 32px', textAlign: 'center', maxWidth: '780px', margin: '0 auto' }}>
+          <div className="ticket cta-card" style={{ maxWidth: '780px', margin: '0 auto' }}>
             <h2 style={{ color: '#f7f5f0', marginBottom: '14px' }}>Ready to Join Them?</h2>
             <p style={{ maxWidth: '520px', margin: '0 auto 24px', lineHeight: '1.7' }}>
               Book your first ride today and experience why hundreds of daily commuters and corporate teams trust Salman Carlift.

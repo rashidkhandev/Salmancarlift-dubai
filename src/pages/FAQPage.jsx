@@ -70,7 +70,7 @@ export const FAQPage = () => {
       {/* Direct Contact Help */}
       <section className="section bg-panel" style={{ paddingTop: '64px', paddingBottom: '64px' }}>
         <div className="container">
-          <div className="ticket" style={{ padding: '56px 32px', textAlign: 'center', maxWidth: '780px', margin: '0 auto' }}>
+          <div className="ticket cta-card" style={{ maxWidth: '780px', margin: '0 auto' }}>
             <h2 style={{ color: '#f7f5f0', marginBottom: '14px' }}>Still Have Questions?</h2>
             <p style={{ maxWidth: '520px', margin: '0 auto 24px', lineHeight: '1.7' }}>
               Our dispatch and customer support team is available 24/7 on WhatsApp. Ask about custom schedules, fare estimates, or multi-stop routes.

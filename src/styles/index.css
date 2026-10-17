@@ -506,6 +506,15 @@ p {
   align-items: center;
 }
 
+.cta-card {
+  padding: 56px 36px;
+  text-align: center;
+}
+
+.trust-ticket {
+  padding: 22px;
+}
+
 .ticket .code {
   font-family: var(--font-mono);
   font-size: 0.75rem;

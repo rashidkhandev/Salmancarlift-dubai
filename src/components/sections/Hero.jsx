@@ -10,7 +10,7 @@ export const Hero = () => {
         <div>
           <span className="eyebrow">24 Hours &middot; 7 Emirates &middot; One Call Away</span>
           <h1>
-            Reliable Car Lift Services <span className="gold">Across the UAE</span>
+            Reliable Car Lift Services <span className="gold">Across Dubai &amp; UAE</span>
           </h1>
           <p className="hero-sub">
             Safe, comfortable and affordable daily pick &amp; drop for professionals, students and families — from Dubai to every corner of the Emirates, on a schedule that works around your day.

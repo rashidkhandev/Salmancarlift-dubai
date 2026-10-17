@@ -1,75 +1,134 @@
 /* ============================================================
-   Responsive Styles & Media Queries
+   SALMAN CARLIFT — Production Mobile Responsiveness & Breakpoints
+   Fully optimized for all mobile screens (320px - 480px),
+   tablets (481px - 960px), and desktops.
    ============================================================ */
 
-/* Desktop & Tablets */
-@media (max-width: 1040px) {
-  .nav-links {
-    gap: 16px;
-  }
-  .nav-links a {
-    font-size: 0.88rem;
-  }
+/* Global Mobile Fix: Prevent any horizontal overflow */
+html, body {
+  overflow-x: hidden;
+  max-width: 100vw;
+  width: 100%;
 }
 
-/* Tablet & Mobile Nav */
+/* ============================================================
+   Tablet & Mobile Navigation (<= 960px)
+   ============================================================ */
 @media (max-width: 960px) {
+  :root {
+    --nav-h: 72px;
+  }
+
+  .nav-inner {
+    padding: 0;
+  }
+
+  /* Dark Backdrop Overlay behind open drawer */
+  .mobile-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(4, 9, 18, 0.72);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    z-index: 998;
+    animation: fadeIn 0.25s ease forwards;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  /* Mobile Drawer Menu */
   .nav-links {
     position: fixed;
-    top: var(--nav-h);
-    left: 0;
+    top: 0;
     right: 0;
     bottom: 0;
-    height: calc(100vh - var(--nav-h));
+    width: min(320px, 84vw);
+    height: 100vh;
     background: var(--navy-950);
+    border-left: 1px solid rgba(228, 199, 119, 0.18);
     flex-direction: column;
     justify-content: flex-start;
-    align-items: flex-start;
-    padding: 36px 28px;
-    gap: 20px;
+    align-items: stretch;
+    padding: calc(var(--nav-h) + 16px) 24px 36px;
+    gap: 6px;
     overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    z-index: 999;
     transform: translateX(100%);
-    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-    box-shadow: -8px 0 30px rgba(0, 0, 0, 0.6);
+    transition: transform 0.32s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: -12px 0 40px rgba(0, 0, 0, 0.75);
   }
 
   .nav-links.open {
     transform: translateX(0);
   }
 
+  .nav-links a {
+    font-size: 1.05rem;
+    font-weight: 600;
+    padding: 12px 14px;
+    border-radius: 10px;
+    color: var(--cream-50);
+    border-bottom: 1px solid rgba(228, 199, 119, 0.06);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: background 0.2s ease, color 0.2s ease;
+  }
+
+  .nav-links a::after {
+    display: none; /* remove bottom underline bar in drawer */
+  }
+
+  .nav-links a:hover,
+  .nav-links a.active {
+    background: rgba(228, 199, 119, 0.1);
+    color: var(--gold-400);
+  }
+
+  /* Mobile Drawer Quick CTA */
   .nav-links.open .mobile-drawer-cta {
     display: flex !important;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 20px;
+    padding-top: 18px;
+    border-top: 1px dashed rgba(228, 199, 119, 0.2);
   }
 
-  .nav-links a {
-    font-size: 1.15rem;
-    padding: 8px 0;
-    width: 100%;
-    border-bottom: 1px solid rgba(228, 199, 119, 0.08);
-  }
-
+  /* Toggle button visible */
   .nav-toggle {
     display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
   }
 
+  /* Hide outline call button in top bar on mobile (handled in drawer/floating buttons) */
   .nav-cta .btn-outline {
     display: none;
   }
 
+  /* Grids on Tablet */
   .grid-3,
   .grid-4 {
     grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
   }
 
   .hero-grid {
     grid-template-columns: 1fr;
-    gap: 40px;
+    gap: 36px;
     text-align: left;
   }
 
   .hero-grid .route-visual {
     order: -1;
     max-width: 320px;
+    margin: 0 auto;
   }
 
   .footer-grid {
@@ -78,86 +137,305 @@
   }
 }
 
-/* Mobile Screens */
+/* ============================================================
+   Standard Mobile Screens (<= 640px)
+   ============================================================ */
 @media (max-width: 640px) {
   :root {
-    --nav-h: 70px;
+    --nav-h: 68px;
+  }
+
+  .container {
+    padding: 0 16px;
   }
 
   .section {
-    padding: 64px 0;
+    padding: 56px 0;
   }
 
+  .section-head {
+    margin-bottom: 36px;
+  }
+
+  .section-head h2 {
+    font-size: 1.85rem;
+    line-height: 1.22;
+  }
+
+  .section-head p {
+    font-size: 0.98rem;
+  }
+
+  /* Single Column Grids */
   .grid-3,
-  .grid-4,
   .grid-2 {
     grid-template-columns: 1fr;
+    gap: 20px;
   }
 
+  /* Trust Strip: 2x2 grid on mobile for compact, beautiful layout */
+  .grid-4 {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+
+  /* Hero Mobile Refinements */
   .hero {
-    padding-top: calc(var(--nav-h) + 24px);
-    padding-bottom: 40px;
+    min-height: auto;
+    padding-top: calc(var(--nav-h) + 20px);
+    padding-bottom: 48px;
   }
 
   .hero h1 {
-    font-size: 2.15rem;
+    font-size: clamp(1.95rem, 7vw, 2.6rem);
+    line-height: 1.2;
+    margin-bottom: 16px;
   }
 
   .hero-sub {
-    font-size: 1.02rem;
+    font-size: 0.98rem;
+    line-height: 1.65;
   }
 
   .hero-actions {
     flex-direction: column;
+    gap: 12px;
     width: 100%;
+    margin-top: 24px;
   }
 
   .hero-actions .btn {
     width: 100%;
+    min-height: 48px;
+    font-size: 0.95rem;
   }
 
+  /* Hero Stats: 3-column dashboard grid */
   .hero-meta {
-    gap: 20px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin-top: 32px;
+    width: 100%;
+  }
+
+  .hero-meta .stat {
+    background: rgba(18, 39, 68, 0.55);
+    border: 1px solid rgba(228, 199, 119, 0.15);
+    border-radius: 12px;
+    padding: 12px 6px;
+    text-align: center;
   }
 
   .hero-meta .stat b {
     font-size: 1.3rem;
   }
 
+  .hero-meta .stat span {
+    font-size: 0.72rem;
+    letter-spacing: 0.04em;
+  }
+
+  .hero-grid .route-visual {
+    max-width: 270px;
+    margin: 0 auto 12px auto;
+  }
+
+  /* Trust Cards on Mobile */
+  .grid-4 .ticket {
+    padding: 16px 12px;
+    border-radius: 16px;
+  }
+
+  .grid-4 .icon-badge {
+    width: 44px;
+    height: 44px;
+    font-size: 1.15rem;
+    margin: 0 auto 8px;
+    border-radius: 12px;
+  }
+
+  .grid-4 .ticket p {
+    font-size: 0.88rem !important;
+  }
+
+  .grid-4 .ticket span {
+    font-size: 0.72rem !important;
+  }
+
   .ticket {
-    padding: 24px 20px;
+    padding: 24px 18px;
+    border-radius: 18px;
+  }
+
+  .cta-card {
+    padding: 32px 18px !important;
+  }
+
+  .trust-ticket {
+    padding: 16px 10px !important;
   }
 
   .ticket::before,
   .ticket::after {
-    display: none; /* remove ticket hole cutouts on very narrow screens for cleaner padding */
+    display: none; /* Hide circular punch-holes on narrow screens to maximize space */
   }
 
+  /* Route Item on Mobile */
   .route-item {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 8px;
     padding: 16px 18px;
+    border-radius: 14px;
+    gap: 12px;
+  }
+
+  .route-item .cities {
+    font-size: 1.05rem;
+    gap: 10px;
+  }
+
+  .route-item .price {
+    font-size: 0.95rem;
+  }
+
+  /* FAQ Touch Optimization */
+  .faq-q {
+    padding: 18px 0;
+    font-size: 0.98rem;
+    gap: 14px;
+    min-height: 48px;
+  }
+
+  .faq-q .plus {
+    font-size: 1.2rem;
+  }
+
+  /* Inner Pages Hero */
+  .page-hero {
+    padding: calc(var(--nav-h) + 24px) 0 36px;
+  }
+
+  .page-hero h1 {
+    font-size: clamp(1.75rem, 6vw, 2.3rem);
+    line-height: 1.22;
+  }
+
+  .breadcrumb {
+    font-size: 0.75rem;
+    margin-bottom: 12px;
+  }
+
+  /* Contact & Forms Mobile Optimization (Fix iOS auto-zoom) */
+  .form-field input,
+  .form-field select,
+  .form-field textarea {
+    font-size: 16px !important; /* Critical: 16px prevents iOS Safari from zooming into the form */
+    padding: 14px 14px;
+    border-radius: 10px;
+  }
+
+  .form-field label {
+    font-size: 0.8rem;
+  }
+
+  /* Footer on Mobile */
+  .footer {
+    padding: 56px 0 28px;
   }
 
   .footer-grid {
     grid-template-columns: 1fr;
-    gap: 30px;
+    gap: 32px;
+    margin-bottom: 40px;
   }
 
   .footer-bottom {
     flex-direction: column;
     text-align: center;
+    gap: 12px;
+    padding-top: 20px;
   }
 
+  /* Floating Action Buttons on Mobile */
   .float-stack {
-    right: 16px;
-    bottom: 20px;
+    right: 14px;
+    bottom: 16px;
+    gap: 10px;
   }
 
   .float-btn {
     width: 50px;
     height: 50px;
-    font-size: 1.3rem;
+    font-size: 1.25rem;
+  }
+}
+
+/* ============================================================
+   Extra Small Devices (<= 380px — iPhone SE, Galaxy Fold, Small Android)
+   ============================================================ */
+@media (max-width: 380px) {
+  :root {
+    --nav-h: 64px;
+  }
+
+  .container {
+    padding: 0 12px;
+  }
+
+  .brand {
+    font-size: 1.02rem;
+    gap: 8px;
+  }
+
+  .brand .mark {
+    width: 32px;
+    height: 32px;
+    font-size: 0.85rem;
+    border-radius: 8px;
+  }
+
+  .nav-cta {
+    gap: 6px;
+  }
+
+  .nav-cta .btn-wa {
+    padding: 7px 10px;
+    font-size: 0.76rem;
+    gap: 6px;
+  }
+
+  .nav-cta .btn-wa svg {
+    width: 15px;
+    height: 15px;
+  }
+
+  .nav-toggle {
+    width: 36px;
+    height: 36px;
+    font-size: 1.2rem;
+  }
+
+  .hero h1 {
+    font-size: 1.85rem;
+  }
+
+  .hero-meta .stat b {
+    font-size: 1.15rem;
+  }
+
+  .hero-meta .stat span {
+    font-size: 0.65rem;
+  }
+
+  .route-visual {
+    max-width: 240px;
+  }
+
+  .grid-4 {
+    grid-template-columns: 1fr; /* Single column on tiny 320px screens */
+  }
+
+  .float-btn {
+    width: 46px;
+    height: 46px;
   }
 }

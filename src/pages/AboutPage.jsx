@@ -95,7 +95,7 @@ export const AboutPage = () => {
       {/* CTA */}
       <section className="section">
         <div className="container">
-          <div className="ticket" style={{ padding: '56px 32px', textAlign: 'center', background: 'linear-gradient(135deg, var(--navy-800), var(--navy-700))' }}>
+          <div className="ticket cta-card" style={{ background: 'linear-gradient(135deg, var(--navy-800), var(--navy-700))' }}>
             <h2 style={{ color: '#f7f5f0', marginBottom: '14px' }}>Want to Know More Before You Book?</h2>
             <p style={{ maxWidth: '520px', margin: '0 auto 24px', lineHeight: '1.7' }}>
               Message our team directly on WhatsApp — we're happy to walk you through routes, timing and pricing before you commit to a plan.

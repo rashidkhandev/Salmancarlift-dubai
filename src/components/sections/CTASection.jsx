@@ -12,10 +12,8 @@ export const CTASection = ({
     <section className="section" style={{ paddingTop: 0 }}>
       <div className="container">
         <div
-          className="ticket"
+          className="ticket cta-card"
           style={{
-            padding: '56px 36px',
-            textAlign: 'center',
             background: 'linear-gradient(135deg, var(--navy-800), var(--navy-700))',
             borderColor: 'rgba(228,199,119,.35)'
           }}
