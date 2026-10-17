@@ -1,4 +1,4 @@
-# Salman Car Lift Dubai — React Architecture & Render Deployment
+# Salman Car Lift Dubai — React Architecture & Vercel Deployment
 
 A modern, high-performance React + Vite web platform engineered for **Salman Car Lift Dubai**, offering reliable monthly, weekly, and daily passenger transport services across Dubai, Abu Dhabi, Sharjah, and all UAE Emirates.
 
@@ -30,10 +30,10 @@ Deployed preview: [https://salman-carleft-dubai.web.app/](https://salman-carleft
    - Production `robots.txt` and comprehensive `sitemap.xml` with priority and change frequencies.
    - Open Graph and Twitter Card tags with `og-cover.jpg` for rich link previews on WhatsApp, iMessage, Facebook, and X.
 
-5. **Production Ready for Render**:
-   - Native `render.yaml` configuration for automated Static Site deployment.
-   - SPA route rewrite rule (`/*` -> `/index.html`) ensuring clean URLs and deep linking work flawlessly.
-   - Production caching headers for assets and images.
+5. **Production Ready for Vercel**:
+   - Native `vercel.json` configuration for automated edge deployment.
+   - SPA route rewrite rule (`/*` -> `/index.html`) ensuring clean URLs and deep linking work flawlessly without breaking static files (`robots.txt`, `sitemap.xml`, images, or assets).
+   - Production caching and security headers.
 
 ---
 
@@ -63,7 +63,7 @@ salman-car-website/
 ├── index.html               # HTML entry with font preconnects & JSON-LD
 ├── package.json             # Scripts & dependencies
 ├── vite.config.js           # Vite build & development configuration
-├── render.yaml              # Render blueprint specification
+├── vercel.json              # Vercel deployment specification & SPA rewrites
 └── README.md
 ```
 
@@ -99,33 +99,33 @@ npm run preview
 
 ---
 
-## 🌐 Deploying to Render
+## 🌐 Deploying to Vercel
 
-### Method A: Deploy using Blueprint (Recommended)
-1. Push your repository to **GitHub** or **GitLab**.
-2. Log into your [Render Dashboard](https://dashboard.render.com/).
-3. Click **New +** and select **Blueprint**.
-4. Connect your `salman-car-website` repository.
-5. Render will automatically detect `render.yaml` and set up:
-   - **Environment**: Static Site
-   - **Build Command**: `npm install && npm run build`
-   - **Publish Directory**: `./dist`
-   - **Routes**: Rewrite `/*` to `/index.html` (for SPA routing)
-6. Click **Apply** to deploy!
+### Step 1: Push Project to GitHub
+```bash
+git add .
+git commit -m "feat: configure Vercel deployment"
+git branch -M main
+git remote add origin https://github.com/<your-username>/salman-car-website.git
+git push -u origin main
+```
 
-### Method B: Manual Static Site Setup
-1. In Render Dashboard, click **New +** -> **Static Site**.
-2. Connect your Git repository.
-3. Configure the following fields:
-   - **Name**: `salman-car-lift-dubai`
-   - **Branch**: `main` (or `master`)
-   - **Build Command**: `npm install && npm run build`
-   - **Publish Directory**: `dist`
-4. In **Redirects / Rewrites**, add:
-   - **Source**: `/*`
-   - **Destination**: `/index.html`
-   - **Action**: `Rewrite`
-5. Click **Create Static Site**.
+### Step 2: Import into Vercel
+1. Log into your [Vercel Dashboard](https://vercel.com/dashboard).
+2. Click **Add New...** -> **Project**.
+3. Select your `salman-car-website` repository from GitHub.
+
+### Step 3: Verify Build Settings
+Vercel automatically detects Vite from `vercel.json`:
+- **Framework Preset**: `Vite`
+- **Build Command**: `npm run build`
+- **Output Directory**: `dist`
+- **Install Command**: `npm install`
+
+### Step 4: Deploy
+Click **Deploy**. Vercel will build the application in under 30 seconds and provide a global edge production URL (e.g., `https://salman-car-lift-dubai.vercel.app`).
+
+The included `vercel.json` ensures all client-side routes (`/services`, `/routes`, `/packages`, `/about`, `/contact`, `/faq`, etc.) and legacy `.html` routes route smoothly to `/index.html` without breaking static assets or XML sitemaps.
 
 ---
 
